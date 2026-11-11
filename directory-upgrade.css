@@ -1,0 +1,58 @@
+/* MY NEWS 365 - single news directory + logo grid + government chooser */
+@media(min-width:801px){.dashboard-row{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)!important}}
+#directory .directory-heading{margin-bottom:16px}
+#directory #tabs{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:12px 0 16px}
+#directory #tabs button{border-radius:999px!important;padding:10px 15px;font-size:12px!important;white-space:nowrap}
+#directory .directory-search{margin-top:12px}
+#directory #grid.grid{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:12px!important;margin-top:13px}
+#directory #grid[hidden]{display:none!important}
+#directory .directory-logo-tile{display:flex!important;flex-direction:column!important;position:relative;justify-content:stretch!important;min-height:138px!important;padding:15px 11px 12px!important;border-radius:16px!important;background:linear-gradient(150deg,#143b53,#0d283d)!important;border:1px solid #295369!important;transition:transform .15s,border-color .15s,box-shadow .15s}
+#directory .directory-logo-tile:hover{transform:translateY(-3px);border-color:#48cfc0!important;box-shadow:0 12px 26px #02132160!important}
+#directory .directory-logo-tile .publisher-link{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:8px!important;overflow:visible!important;text-align:center!important;min-height:105px!important;width:100%!important;padding:4px 0!important}
+#directory .publisher-icon{width:52px!important;height:52px!important;flex:0 0 52px!important;border-radius:16px!important;background:linear-gradient(145deg,#e4fbf7,#cbe5f3)!important;box-shadow:0 5px 20px #0002!important}
+#directory .publisher-favicon{width:39px!important;height:39px!important;inset:6px!important;object-fit:contain!important}
+#directory .publisher-initials{font-size:17px!important;color:#15435a!important;letter-spacing:-.07em}
+#directory .publisher-name{font-size:13px!important;font-weight:820!important;line-height:1.4!important;min-height:19px;white-space:normal;word-break:keep-all;text-align:center}
+#directory .publisher-category{font-size:10px;color:#8eafc1;line-height:1.2}
+#directory .directory-logo-tile .star{position:absolute;right:7px;top:6px;z-index:2;background:#ffffff16;border:0;border-radius:50%;width:29px;height:29px;font-size:17px!important;line-height:29px;padding:0!important}
+#directory .directory-logo-tile .star.on{color:#ffd47c!important}
+#directory .directory-more{display:block;margin:20px auto 0;border-radius:999px;background:#0f6767;color:#e8ffff;border:1px solid #57d6c7;padding:11px 23px;font-weight:750;cursor:pointer}
+#directory .directory-more[hidden]{display:none!important}
+.gov-navigator{margin:9px 0 20px;padding:20px;border:1px solid #296377;background:radial-gradient(ellipse at top right,#18647760,transparent 70%),#102d43;border-radius:17px;color:#e8f7fb}
+.gov-navigator[hidden]{display:none!important}
+.gov-head{display:flex;gap:13px;align-items:center;margin-bottom:14px}
+.gov-head-icon{display:flex;align-items:center;justify-content:center;width:45px;height:45px;border-radius:12px;background:#1c5c66;color:#7dfff0;font-size:25px;flex-shrink:0}
+.gov-head h3{margin:0 0 6px;font-size:20px;letter-spacing:-.5px}
+.gov-head p,.gov-help{margin:0;color:#acc8d5;line-height:1.55;font-size:12px}
+.gov-controls{display:grid;grid-template-columns:auto minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:10px;margin:17px 0}
+.gov-controls label{font-size:13px;font-weight:800;color:#d0f5f0}
+.gov-controls select{width:100%;min-width:0;min-height:43px;background:#09283c;color:#ecfbff;border-radius:10px;border:1px solid #377589;padding:9px 12px;font-size:14px}
+.gov-target{background:#0c2436;border:1px solid #2c5166;border-radius:14px;padding:16px}
+.gov-choice{display:flex;gap:13px;align-items:center;flex-wrap:wrap}
+.gov-choice-icon{font-size:29px;flex:0 0 auto}
+.gov-choice-copy{display:flex;flex-direction:column;gap:6px;flex:1 1 190px;min-width:0}
+.gov-choice-copy strong{font-size:16px;color:#f8ffff}
+.gov-choice-copy span{font-size:12px;color:#afcddd}
+.gov-links{display:flex;flex-wrap:wrap;gap:8px}
+.gov-link{display:inline-flex;justify-content:center;align-items:center;padding:10px 13px;background:#38d5bf;color:#092b3d!important;border:1px solid #38d5bf;border-radius:11px;font-size:12px;text-decoration:none;font-weight:850;min-height:42px}
+.gov-link.secondary{background:transparent;color:#d6f5f2!important;border-color:#428494}
+.gov-help{margin-top:12px;font-size:11px}
+.topic-more{width:100%;padding:11px 15px;margin-top:12px;background:#0e5961;color:#e4fdf6;border:1px solid #54cec0;border-radius:11px;font-size:13px;font-weight:800;cursor:pointer}
+.topic-more[hidden]{display:none!important}
+.topic-more:disabled{opacity:.56;cursor:wait}
+.topic-more:hover,.gov-link:hover{filter:brightness(1.09)}
+html:not([data-theme=dark]) #directory .directory-logo-tile{background:linear-gradient(150deg,#fff,#eff9fa)!important;border-color:#d3e7e9!important}
+html:not([data-theme=dark]) #directory .publisher-name{color:#123349!important}
+html:not([data-theme=dark]) #directory .publisher-category{color:#698392!important}
+html:not([data-theme=dark]) .gov-navigator{background:#eaf8f9;color:#163d51;border-color:#c5e0e4}
+html:not([data-theme=dark]) .gov-head h3,html:not([data-theme=dark]) .gov-choice-copy strong{color:#153b4c}
+html:not([data-theme=dark]) .gov-head p,html:not([data-theme=dark]) .gov-help,html:not([data-theme=dark]) .gov-choice-copy span{color:#5f7a8e}
+html:not([data-theme=dark]) .gov-controls label{color:#24546a}
+html:not([data-theme=dark]) .gov-controls select{background:#fff;color:#174054;border-color:#abcbd6}
+html:not([data-theme=dark]) .gov-target{background:#fff;border-color:#cadfe8}
+@media(max-width:1080px){#directory #grid.grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+@media(max-width:760px){#directory #grid.grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}#directory .directory-logo-tile{min-height:130px!important;padding:12px 7px!important}#directory .directory-logo-tile .publisher-link{min-height:103px!important}#directory .publisher-icon{width:46px!important;height:46px!important;flex-basis:46px!important;border-radius:13px!important}#directory .publisher-favicon{height:34px!important;width:34px!important;inset:5px!important}#directory .publisher-name{font-size:11px!important}#directory #tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}#directory #tabs button{scroll-snap-align:start}#directory #tabs::-webkit-scrollbar{display:none}.gov-controls{grid-template-columns:1fr 1fr;gap:6px 10px}.gov-controls label{grid-row:1}.gov-controls select{grid-row:2}.gov-navigator{padding:14px}.gov-choice{align-items:flex-start}.gov-links{width:100%}.gov-link{flex:1;min-width:120px}}
+@media(max-width:450px){#directory #grid.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}#directory .directory-logo-tile{min-height:132px!important}#directory .publisher-icon{width:52px!important;height:52px!important;flex-basis:52px!important}#directory .publisher-favicon{height:39px!important;width:39px!important;inset:6px!important}#directory .publisher-name{font-size:12px!important}.gov-head h3{font-size:17px}.gov-choice-copy strong{font-size:14px}}
+/* Preserve native hidden semantics against existing layout declarations. */
+#directory .directory-search[hidden],#directory #count[hidden],#directory #empty[hidden]{display:none!important}
+@media(min-width:801px){.dashboard-row>.community-card,.dashboard-row>.live{width:100%;max-width:100%}}
