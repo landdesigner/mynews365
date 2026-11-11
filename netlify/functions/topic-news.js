@@ -4,7 +4,9 @@ const field=(xml,tag)=>{const m=xml.match(new RegExp('<'+tag+'(?:\\s[^>]*)?>([\\
 exports.handler=async event=>{
  const query=(event.queryStringParameters?.q||'').trim();
  if(!query||query.length>40||/[<>\x00-\x1f]/.test(query))return {statusCode:400,headers:{'Content-Type':'application/json'},body:JSON.stringify({error:'Invalid query'})};
- const variants=[query+' when:30d',query];
+ const variants=['\"'+query+'\" when:30d','\"'+query+'\"'];
+ const normalize=s=>s.normalize('NFKC').toLocaleLowerCase('ko-KR').replace(/\s+/g,'');
+ const needle=normalize(query);
  try{
   let items=[];
   for(const q of variants){
@@ -12,7 +14,7 @@ exports.handler=async event=>{
    const response=await fetch(url,{headers:{'User-Agent':'Mozilla/5.0 (compatible; MyNews365/3.0)'},signal:AbortSignal.timeout(8000)});
    if(!response.ok)throw Error('RSS HTTP '+response.status);
    const xml=await response.text();
-   items=[...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map(m=>({title:field(m[1],'title'),link:field(m[1],'link'),date:field(m[1],'pubDate'),source:field(m[1],'source')})).filter(x=>x.title&&/^https:\/\//.test(x.link)).sort((a,b)=>(Date.parse(b.date)||0)-(Date.parse(a.date)||0)).slice(0,15);
+   items=[...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map(m=>({title:field(m[1],'title'),link:field(m[1],'link'),date:field(m[1],'pubDate'),source:field(m[1],'source')})).filter(x=>x.title&&/^https:\/\//.test(x.link)&&normalize(x.title).includes(needle)).sort((a,b)=>(Date.parse(b.date)||0)-(Date.parse(a.date)||0)).slice(0,15);
    if(items.length)break;
   }
   return {statusCode:200,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'public, max-age=180'},body:JSON.stringify({items,query})};
