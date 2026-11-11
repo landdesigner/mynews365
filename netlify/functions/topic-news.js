@@ -7,6 +7,11 @@ exports.handler=async event=>{
  const variants=['\"'+query+'\" when:30d','\"'+query+'\"'];
  const normalize=s=>s.normalize('NFKC').toLocaleLowerCase('ko-KR').replace(/\s+/g,'');
  const needle=normalize(query);
+ // Do not display articles older than ten calendar years, including negative legacy coverage.
+ const now=new Date();
+ const cutoff=new Date(now);
+ cutoff.setFullYear(cutoff.getFullYear()-10);
+ const isRecent=date=>{const t=Date.parse(date);return Number.isFinite(t)&&t>=cutoff.getTime()&&t<=now.getTime()+86400000;};
  try{
   let items=[];
   for(const q of variants){
@@ -14,7 +19,7 @@ exports.handler=async event=>{
    const response=await fetch(url,{headers:{'User-Agent':'Mozilla/5.0 (compatible; MyNews365/3.0)'},signal:AbortSignal.timeout(8000)});
    if(!response.ok)throw Error('RSS HTTP '+response.status);
    const xml=await response.text();
-   items=[...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map(m=>({title:field(m[1],'title'),link:field(m[1],'link'),date:field(m[1],'pubDate'),source:field(m[1],'source')})).filter(x=>x.title&&/^https:\/\//.test(x.link)&&normalize(x.title).includes(needle)).sort((a,b)=>(Date.parse(b.date)||0)-(Date.parse(a.date)||0)).slice(0,15);
+   items=[...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map(m=>({title:field(m[1],'title'),link:field(m[1],'link'),date:field(m[1],'pubDate'),source:field(m[1],'source')})).filter(x=>x.title&&/^https:\/\//.test(x.link)&&normalize(x.title).includes(needle)&&isRecent(x.date)).sort((a,b)=>(Date.parse(b.date)||0)-(Date.parse(a.date)||0)).slice(0,15);
    if(items.length)break;
   }
   return {statusCode:200,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'public, max-age=180'},body:JSON.stringify({items,query})};
