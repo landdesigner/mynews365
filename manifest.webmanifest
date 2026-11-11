@@ -1,12 +1,12 @@
 {
-  "name": "신문 바로가기",
-  "short_name": "신문 바로가기",
-  "description": "국내외 신문사 공식 홈페이지 바로가기",
+  "name": "MY NEWS 365 | 나만의 뉴스 포털",
+  "short_name": "MY NEWS 365",
+  "description": "구미·경북 최신 뉴스와 국내외 언론사 바로가기",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#f5f7fb",
-  "theme_color": "#142b51",
+  "background_color": "#f4f7fa",
+  "theme_color": "#10233e",
   "icons": [
     {
       "src": "/icon-192.png",
