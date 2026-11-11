@@ -125,3 +125,35 @@ html:not([data-theme="dark"]) .quick-directory-panel h2 span{color:#008c7c}
  footer{padding-bottom:22px!important}
 }
 @media(max-width:380px){.top-story{grid-template-columns:18px 75px minmax(0,1fr)!important;gap:6px!important}.top-story .story-media{width:75px!important;height:62px!important}.top-story a{font-size:calc(11.5px * var(--reader-scale,1))!important}.dashboard-row .headlines li.local-featured{grid-template-columns:15px 90px minmax(0,1fr)!important;gap:5px!important}.local-story-media{width:90px;height:94px}.quick-directory-grid a b{font-size:9px}}
+
+/* Edition 2026-11: publisher favicons + five newest interest articles */
+#directory .tile{gap:8px!important;min-width:0;padding:6px 9px 6px 11px!important}
+#directory .tile .publisher-link{display:flex;align-items:center;gap:11px;min-width:0;overflow:hidden;text-decoration:none!important;padding:9px 0!important}
+.publisher-icon{width:38px;height:38px;flex:0 0 38px;border-radius:11px;display:grid;place-items:center;position:relative;overflow:hidden;background:linear-gradient(140deg,#e2fcf7,#d7e9f4);color:#0a6768;border:1px solid #bfdcde;box-shadow:0 3px 12px #031d3122}
+.publisher-favicon{width:28px;height:28px;object-fit:contain;display:block;position:absolute;inset:5px;z-index:1;border-radius:5px}
+.publisher-initials{font-weight:850;font-size:11px;letter-spacing:-.08em;color:#12556a}
+.publisher-name{font-weight:750;font-size:13px;overflow-wrap:anywhere;line-height:1.4;color:inherit}
+html[data-theme="dark"] .publisher-icon{background:linear-gradient(135deg,#154b5a,#113b53);border-color:#356575}
+html[data-theme="dark"] .publisher-initials{color:#88eee0}
+html[data-theme="dark"] #directory .tile .publisher-name{color:#eaf6fb}
+#directory .tile .star{flex:0 0 auto}
+.topic-results .topic-story{display:flex!important;align-items:flex-start;gap:10px!important;padding:11px 0!important;min-height:55px;border-bottom:1px solid #285267!important}
+.topic-story-thumb{display:block!important;width:76px;height:59px;flex:0 0 76px;object-fit:cover;border-radius:9px;border:1px solid #28576b;background:#184258}
+.topic-story-body{min-width:0;flex:1}
+.topic-results .topic-story-body a{display:-webkit-box!important;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;line-height:1.38!important;word-break:keep-all!important;font-weight:720!important}
+.topic-results .topic-story-body small{display:block;margin-top:6px;font-size:10px;color:#9ab9c7}
+.topic-results .topic-story.no-photo{padding-left:4px}
+.topic-results .topic-story.no-photo::before{content:'◦';color:#62ebd5;font-size:22px;margin-right:2px;line-height:1}
+html:not([data-theme="dark"]) .topic-results .topic-story{border-bottom-color:#e1e9ef!important}
+html:not([data-theme="dark"]) .topic-results .topic-story-body small{color:#657b8a}
+@media(max-width:760px){#directory .tile .publisher-link{gap:8px!important}.publisher-icon{width:31px;height:31px;flex-basis:31px;border-radius:9px}.publisher-favicon{width:25px;height:25px;inset:3px}.publisher-name{font-size:12px}.topic-story-thumb{width:70px;height:54px;flex-basis:70px}.topic-results .topic-story-body a{font-size:calc(12px * var(--reader-scale,1))!important}}
+@media(max-width:350px){#directory .tile{padding:5px!important}.publisher-icon{width:27px;height:27px;flex-basis:27px}.publisher-favicon{width:23px;height:23px;inset:2px}.publisher-name{font-size:11px}}
+
+/* Show a purposeful editorial image while remote article thumbnails are pending.
+   A successfully loaded publisher photo covers this background. */
+.top-story[data-sector="정치"] .story-media{background-image:url('/assets/editorial/politics.webp');background-size:cover;background-position:center}
+.top-story[data-sector="경제"] .story-media{background-image:url('/assets/editorial/economy.webp');background-size:cover;background-position:center}
+.top-story[data-sector="사회"] .story-media{background-image:url('/assets/editorial/society.webp');background-size:cover;background-position:center}
+.top-story[data-sector="국제"] .story-media{background-image:url('/assets/editorial/world.webp');background-size:cover;background-position:center}
+.top-story[data-sector="IT"] .story-media{background-image:url('/assets/editorial/technology.webp');background-size:cover;background-position:center}
+.local-story-media{background-image:url('/assets/editorial/local.webp');background-size:cover;background-position:center}
