@@ -1,0 +1,44 @@
+/* MY NEWS 365 — Only article-specific images. No decorative news photos. */
+/* Old CSS painted repeating pictures behind the image slot: explicitly remove them. */
+#topList .story-media,
+#topList .top-story[data-sector] .story-media,
+#localNews .local-story-media {
+ background-image:none !important;
+ background-color:#12364c !important;
+}
+#topList .story-media img,#localNews .local-story-media img{object-fit:cover}
+/* If the article feed has no image, use editorial typography rather than any placeholder. */
+#topList .top-story.no-article-image{grid-template-columns:30px minmax(0,1fr) !important;}
+#topList .top-story.no-article-image .top-content{min-width:0;}
+#topList .top-story:first-child.no-article-image{
+ min-height:250px !important;
+ background:radial-gradient(circle at 95% 5%,rgba(88,239,214,.13),transparent 54%),
+ linear-gradient(130deg,#0b3044,#092437) !important;
+ justify-content:flex-end !important;
+ padding:20px !important;
+}
+#topList .top-story:first-child.no-article-image .top-content{
+ flex:0 0 auto !important;
+ background:transparent !important;
+ padding:66px 4px 4px !important;
+}
+#topList .top-story:first-child.no-article-image .top-rank{top:15px;left:16px;}
+#localNews .headlines li.local-featured.local-text-only{
+ grid-template-columns:18px minmax(0,1fr) !important;
+ background:linear-gradient(125deg,rgba(60,227,199,.06),transparent) !important;
+ border-radius:12px;
+ padding:15px 10px !important;
+}
+#localNews .headlines li.local-featured.local-text-only a{
+ font-size:calc(14px * var(--reader-scale,1)) !important;
+ -webkit-line-clamp:4;
+}
+@media(max-width:800px){
+ #topList .top-story:first-child.no-article-image{min-height:205px !important;}
+}
+@media(max-width:760px){
+ #topList .top-story.no-article-image{grid-template-columns:23px minmax(0,1fr) !important;min-height:78px !important;}
+ #topList .top-story:first-child.no-article-image{min-height:185px !important;padding:15px !important;}
+ #topList .top-story:first-child.no-article-image .top-content{padding:50px 0 5px !important;}
+ #localNews .headlines li.local-featured.local-text-only{grid-template-columns:16px minmax(0,1fr) !important;}
+}
