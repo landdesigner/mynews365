@@ -153,7 +153,11 @@ html:not([data-theme="dark"]) .topic-results .topic-story-body small{color:#657b
    A successfully loaded publisher photo covers this background. */
 .top-story[data-sector="정치"] .story-media{background-image:url('/assets/editorial/politics.webp');background-size:cover;background-position:center}
 .top-story[data-sector="경제"] .story-media{background-image:url('/assets/editorial/economy.webp');background-size:cover;background-position:center}
-.top-story[data-sector="사회"] .story-media{background-image:url('/assets/editorial/society.webp');background-size:cover;background-position:center}
+.top-story[data-sector="문화"] .story-media{background-image:url('/assets/editorial/culture.webp');background-size:cover;background-position:center}
 .top-story[data-sector="국제"] .story-media{background-image:url('/assets/editorial/world.webp');background-size:cover;background-position:center}
 .top-story[data-sector="IT"] .story-media{background-image:url('/assets/editorial/technology.webp');background-size:cover;background-position:center}
 .local-story-media{background-image:url('/assets/editorial/local.webp');background-size:cover;background-position:center}
+
+
+/* extra safe area below content for mobile dock */
+@media(max-width:760px){body::after{content:"";display:block;height:110px}}
